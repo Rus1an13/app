@@ -84,26 +84,18 @@
         <ul class="pagination justify-content-center my-4">
             <div class="custom-shadow d-flex">
                 <li class="page-item {% if not goods.has_previous %}disabled{% endif %}">
-                    <a class="page-link" href="{% if goods.has_previous %}
-                    {% url "catalog:index" slug_url goods.previous_page_number %}
-                    {% else %}
-                    #
-                    {% endif %}">Назад</a>
+                    <a class="page-link" href="{% if goods.has_previous %}?page={{ goods.previous_page_number }}{% else %}#{% endif %}">Назад</a>
                 </li>
 
                 {% for p in goods.paginator.page_range %}
                     {% if p >= goods.number|add:-2 and p <= goods.number|add:2 %}
                     <li class="page-item {% if goods.number == p %}active{% endif %}">
-                        <a class="page-link" href="{% url "catalog:index" slug_url p %}">{{ p }}</a></li>
+                        <a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
                     {% endif %}
                 {% endfor %}
 
                 <li class="page-item {% if not goods.has_next %}disabled{% endif %}">
-                    <a class="page-link" href="{% if goods.has_next %}
-                    {% url "catalog:index" slug_url goods.next_page_number %}
-                    {% else %}
-                    #
-                    {% endif %}">Вперёд</a>
+                    <a class="page-link" href="{% if goods.has_next %}?page={{ goods.next_page_number }}{% else %}#{% endif %}">Вперёд</a>
                 </li>
             </div>
         </ul>
