@@ -87,10 +87,10 @@
                     <a class="page-link" href="{% if goods.has_previous %}?page={{ goods.previous_page_number }}{% else %}#{% endif %}">Назад</a>
                 </li>
 
-                {% for p in goods.paginator.page_range %}
-                    {% if p >= goods.number|add:-2 and p <= goods.number|add:2 %}
-                    <li class="page-item {% if goods.number == p %}active{% endif %}">
-                        <a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+                {% for page in goods.paginator.page_range %}
+                    {% if page >= goods.number|add:-2 and page <= goods.number|add:2 %}
+                    <li class="page-item {% if goods.number == page %}active{% endif %}">
+                        <a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
                     {% endif %}
                 {% endfor %}
 
