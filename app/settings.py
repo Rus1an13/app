@@ -130,6 +130,7 @@ STATICFILES_DIRS: list[Path] = [
 
 INTERNAL_IPS: list[str] = [
     '127.0.0.1',
+    "::1",
 ]
 
 MEDIA_URL = 'media/'
