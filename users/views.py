@@ -45,7 +45,7 @@ def registration(request):
     context = {'title': 'Home - Регистрация', 'form': form}
     return render(request, 'users/registration.html', context)
 
-@login_required
+@login_required # Запрет доспупа не авторизованным пользователям
 def profile(request):
     if request.method == 'POST':
         form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
@@ -62,7 +62,7 @@ def profile(request):
 def users_cart(request):
     return render(request, 'users/users_cart.html')
 
-@login_required
+@login_required # Запрет доспупа не авторизованным пользователям
 def logout(request):
     messages.success(request, f"{request.user.username}, Вы вышли из аккаунта")
     auth.logout(request)

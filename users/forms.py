@@ -3,7 +3,7 @@ from django import forms
 from users.models import User
 
 
-class UserLoginForm(AuthenticationForm):
+class UserLoginForm(AuthenticationForm): # AuthenticationForm - проверяет зарегистрированного пользователя
     class Meta:
         model = User
         fields = ['username', 'password']

@@ -1,7 +1,7 @@
 from typing import Any
 
 from django.core.paginator import Paginator
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render, get_list_or_404
 
 from goods.models import Products
 from goods.utils import q_search

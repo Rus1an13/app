@@ -131,7 +131,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS: list[Path] = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'static', # Путь к статичным файлам
 ]
 
 INTERNAL_IPS: list[str] = [
@@ -146,6 +146,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'users.User'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' # Эта строчка для автозаполнения id.
+AUTH_USER_MODEL = 'users.User' # Переопределяем создание модели по умолчанию auth_user на создание нашей модели User из приложения users
 LOGIN_URL = '/user/login/'

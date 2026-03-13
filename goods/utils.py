@@ -1,15 +1,15 @@
 from re import search
 
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, SearchHeadline
-from django.db.models import Q, Count
+from django.db.models import Q, Count # Q - объекты позволяют кратко записывать условия
 from pygments.lexers.webassembly import keywords
 
 from goods.models import Products
 
 
 def q_search(query):
-    if query.isdigit() and len(query) <= 5:
-        return Products.objects.filter(id=int(query))
+    if query.isdigit() and len(query) <= 3: # Условие что значение будет цифра или меньше(равно) 3
+        return Products.objects.filter(id=int(query)) # фильтр по id
 
     vector = SearchVector('name', 'description')
     query = SearchQuery(query)
@@ -28,7 +28,7 @@ def q_search(query):
     # q_objects = Q()
     #
     # for token in keywords:
-    #     q_objects |= Q(description__icontains=token)
-    #     q_objects |= Q(name__icontains=token)
+    #     q_objects |= Q(description__icontains=token) # Или равно, поиск по описанию
+    #     q_objects |= Q(name__icontains=token) # Или равно, поиск по названию
     #
     # return Products.objects.filter(q_objects)

@@ -32,10 +32,10 @@ class Products(models.Model):
         return f'{self.name} Количество - {self.quantity}'
 
     def display_id(self):
-        return f"{self.id:05}"
+        return f"{self.id:05}" # Приводит id в 5-ти значное число, id=7 => 00007
 
     def sell_price(self):
         if self.discount:
-            return round(self.price - self.price*self.discount/100, 2)
+            return round(self.price - self.price*self.discount/100, 2) # Расчет скидки, round - округляет до 2 после запятой
 
-        return self.price
+        return self.price # Если нет скидки просто возвращает цену
