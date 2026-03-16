@@ -1,3 +1,5 @@
+from django.urls import reverse
+
 from django.db import models
 
 class Categories(models.Model):
@@ -30,6 +32,9 @@ class Products(models.Model):
 
     def __str__(self):
         return f'{self.name} Количество - {self.quantity}'
+
+    def get_absolute_url(self):
+        return reverse("catalog:product", kwargs={"product_slug": self.slug})
 
     def display_id(self):
         return f"{self.id:05}" # Приводит id в 5-ти значное число, id=7 => 00007
