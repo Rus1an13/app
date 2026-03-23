@@ -15,6 +15,7 @@ def create_order(request):
                 with transaction.atomic():
                     user = request.user
                     cart_items = Cart.objects.filter(user=user)
+
                     if cart_items.exists():
                         # Создать заказ
                         order = Order.objects.create(
@@ -39,7 +40,7 @@ def create_order(request):
                             product.save()
 
                             # Очистить корзину пользователя послу создания заказа
-                        cart_item.delete()
+                        cart_items.delete()
 
                         messages.success(request, 'Заказ оформлен!')
                         return redirect('user:profile')
@@ -50,6 +51,7 @@ def create_order(request):
         initial = {
             'first_name': request.user.first_name,
             'last_name': request.user.last_name,}
+
         form = CreateOrderForm(initial=initial)
     context = {
         'title': 'Home - Оформление заказа',
