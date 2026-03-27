@@ -45,13 +45,16 @@
                             <div class="col-md-6 mb-3">
                                 <label for="id_phone_number" class="form-label">Номер телефона*:</label>
                                 <input type="text" class="form-control" id="id_phone_number" name="phone_number"
-                                       value="{% if form.phone_number.value %}{% endif %}"
-                                       placeholder="В формате: XXX-XXX-XX-XX"
+                                       value="{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %}"
+                                       placeholder="В формате: (000) 000-0000"
                                        required>
                                 {% if form.phone_number.errors %}
                                     <div class="alert alert-danger alert-dismissible fade show">
                                         {{ form.phone_number.errors }}</div>
                                 {% endif %}
+                                <div class="alert alert-danger alert-dismissible fade show" style="display: none"
+                                     id="phone_number_error">Неверный формат номера
+                                </div>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="delivery" class="form-label">Способ доставки: </label>
@@ -69,7 +72,8 @@
                             <div class="mb-3" id="deliveryAddressField">
                                 <label for="id_delivery_address" class="form-label">Адрес доставки*:</label>
                                 <textarea class="form-control" id="id_delivery_address"
-                                          value="{% if form.delivery_address.value %}{{ form.delivery_address.value }}{% endif %}"
+                                          value="
+                                                  {% if form.delivery_address.value %}{{ form.delivery_address.value }}{% endif %}"
                                           name="delivery_address" rows="2"></textarea>
                                 {% if form.delivery_address.errors %}
                                     <div class="alert alert-danger alert-dismissible fade show">{{ form.delivery_address.errors }}</div>
