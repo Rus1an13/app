@@ -150,3 +150,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' # Эта строчка для автозаполнения id.
 AUTH_USER_MODEL = 'users.User' # Переопределяем создание модели по умолчанию auth_user на создание нашей модели User из приложения users
 LOGIN_URL = '/user/login/'
+LOGIN_REDIRECT_URL = '/'
